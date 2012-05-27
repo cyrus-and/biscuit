@@ -1,0 +1,58 @@
+biscuit - modular HTTP cookie parser
+Copyright (C) 2012 Andrea Cardaci <cyrus.and@gmail.com>
+--------------------------------------------------------------------------------
+
+Info:
+
+    biscuit simplifies the managing and the organization of cookies, it reads
+    lines from standard input in the form:
+
+        host name=value; name=value; ...
+
+    parses them and applies some logic according to its known services, for
+    example it discards equivalent entries by using a specific field as a key or
+    it skips some useless fields in the output. The result is dumped on standard
+    output. Several formats are available: quoted Javascript to be pasted in the
+    URL bar of the browser, Wget command invocation, etc.
+
+    Both service and printer interfaces are modular.
+
+Dependencies:
+
+    python (>= 2.7.3)
+
+Examples:
+
+    List all the available services:
+
+        $ biscuit list services
+
+    List all the available printers:
+
+        $ biscuit list printers
+
+    Describe the "js-url" printer:
+
+        $ biscuit describe js-url
+
+    Parse a text file processing all known services and also reporting unknown
+    cookies using the default printer:
+
+        $ biscuit parse < cookies.txt
+
+    Use tshark to extract cookies from a pcap file and process only the facebook
+    ones using Javascript output, unknown cookies are discarded:
+
+        $ tshark -r file.cap \
+                 -R 'http.cookie and http.host' \
+                 -T fields -e http.host -e http.cookie \
+          | biscuit parse -n js-url facebook
+
+Custom modules:
+
+    A module is a Python file located in services/ for the former and in
+    /printers for the latter. Working examples can be found in that folders.
+
+    Both default service (core/default_service.py) and printer
+    (core/default_printer.py) can be used as a template for creating new
+    modules.
