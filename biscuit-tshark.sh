@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -lt 4 ] ; then
-    echo "$0 file ssid password [-n] printer [services [services ...]]"
+    echo "$0 file ssid password [-n] [-p printer] [service [service ...]]"
     exit 1
 fi
 
