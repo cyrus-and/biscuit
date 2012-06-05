@@ -1,5 +1,5 @@
 #
-# biscuit - modular HTTP cookie parser
+# biscuit - Modular HTTP cookie parser
 # Copyright (C) 2012 Andrea Cardaci <cyrus.and@gmail.com>
 #
 # This file is part of biscuit.
