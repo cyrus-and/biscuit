@@ -51,7 +51,7 @@ Examples:
 Custom modules:
 
     A module is a Python file located in services/ for the former and in
-    /printers for the latter. Working examples can be found in that folders.
+    printers/ for the latter. Working examples can be found in that folders.
 
     Both default service (core/default_service.py) and printer
     (core/default_printer.py) can be used as a template for creating new
