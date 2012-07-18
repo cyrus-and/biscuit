@@ -24,8 +24,9 @@ import imp
 # load all the python modules in the given directory returning a dictionary:
 # module name -> module object
 def load_module_dir( path ):
+    root_path = os.path.join( os.path.dirname( __file__ ) , ".." )
     modules = dict()
-    pattern = glob.glob( os.path.join( path , "*[!_].py" ) )
+    pattern = glob.glob( os.path.join( root_path , path , "*[!_].py" ) )
     for file in pattern:
         name , _ = os.path.splitext( os.path.basename( file ) )
         modules[ name ] = imp.load_source( name , file )
